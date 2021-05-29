@@ -13,12 +13,12 @@ Be sure to do both parts!
 
 For this weekend challenge you'll be expanding on a movie management application! We're already able to see movies that exist in our DB. We'll need to be able to see detailed view for each individual movie, including genres associated with that movie. We also need to able to add a new movie's information.
 
-## Database Setup
+## [x] Database Setup
 
-1. Create a database named `saga_movies_weekend`
-2. Run the queries from `/database/database.sql` on the `saga_movies_weekend` database
+1. [x]Create a database named `saga_movies_weekend`
+2. [x]Run the queries from `/database/database.sql` on the `saga_movies_weekend` database
 
-## Install Dependencies
+## [x] Install Dependencies
 
 1. `npm install`
 2. `npm run server`
