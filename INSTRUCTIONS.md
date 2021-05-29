@@ -44,8 +44,8 @@ We've added some movie posters in the `public/images` folder, and the database i
 
 This view is completed already! It displays all of the movies in the movie database. 
 
-- TODO: When a movie poster is clicked, a user should be brought to the `/details` view for that movie.
-- TODO: Have a way to get to the Add Movie Page
+- [x]TODO: When a movie poster is clicked, a user should be brought to the `/details` view for that movie. Solution: add click event on the img element to navigate to details page with the movie id. 
+- [x]TODO: Have a way to get to the Add Movie Page. Solution: add NavLink to App.js. The user will be able to get to the  'Add Movie' Page from anywhere.
 
 ### Details Page
 
