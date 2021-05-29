@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get all movies', err);
+      console.log('ERROR: Get all genres', err);
       res.sendStatus(500)
     })
 

@@ -11,6 +11,7 @@ function MovieList() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
+        dispatch({type: 'FETCH_GENRES'})
     }, []);
 
     return (
@@ -21,7 +22,7 @@ function MovieList() {
                 //removed return statement
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick={() => history.push(`/details/:${movie.id}`)} src={movie.poster} alt={movie.title}/>
+                            <img onClick={() => history.push(`/detail/${movie.id}`)} src={movie.poster} alt={movie.title}/>
                         </div>
                 )}
             </section>
