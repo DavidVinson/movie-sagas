@@ -17,7 +17,7 @@ function App() {
           <Movie />
         </Route>
 
-        <Route path="/moviedetail">
+        <Route path="/details">
           <MovieDetail />
         </Route>
       </Router>
