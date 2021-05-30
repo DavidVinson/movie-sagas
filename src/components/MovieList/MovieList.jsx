@@ -14,15 +14,6 @@ function MovieList() {
         dispatch({ type: 'FETCH_GENRES' })
     }, []);
 
-    // function handleClick(movieId) {
-    //     dispatch({
-    //         type: 'FETCH_MOVIE_DETAIL',
-    //         payload: movieId
-    //     });
-
-    //     history.push(`/detail/${movieId}`)
-    // }
-
 
 return (
     <main>
