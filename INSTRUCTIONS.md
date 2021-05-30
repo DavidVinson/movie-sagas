@@ -62,14 +62,14 @@ This view is completed already! It displays all of the movies in the movie datab
 This should show:
 
 - [x]an input field (for the movie title)
-- []an input field (for the movie poster image URL))
+- [x]an input field (for the movie poster image URL))
 - []a textarea (for the movie description)
-- []a dropdown (for the genres)
+- [x]a dropdown (for the genres)
 
 The Add Movie page should have the buttons:
 
 - [x]`Cancel` button, which should bring the user to the Home/List Page
-- []`Save` button, which should update the title and description in the database and bring the user to the Home/List Page (which now has the new movie)
+- [x]`Save` button, which should update the title and description in the database and bring the user to the Home/List Page (which now has the new movie)
 
 **Base functionality does not require being able to select more than one genre for a new movie**
 

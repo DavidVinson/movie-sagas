@@ -10,7 +10,7 @@ function App() {
       <h1>The Movies Saga!</h1>
 
       <Router>  
-        {/* <NavLink to='/movie'>Add New Movie</NavLink>     */}
+        <NavLink to='/movie'>Add New Movie</NavLink>    
 
         <Route path="/" exact>
           <MovieList />

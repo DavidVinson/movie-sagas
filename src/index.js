@@ -18,6 +18,8 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('FETCH_GENRE_DETAIL', fetchGenreDetail);
     yield takeEvery('SEARCH_OMDB_TITLE', searchOMDB);
+    yield takeEvery('SAVE_MOVIE', saveMovie);
+    yield takeEvery('RESET_OMB_SEARCH', resetOMB);
 }
 
 function* fetchAllMovies() {
@@ -81,6 +83,26 @@ function* searchOMDB(action) {
     }
 }
 
+function* saveMovie(action) {
+    //save movie to db
+    try {
+        yield axios.post('/api/movie/', action.payload);
+        console.log('POST movie', action.payload);
+        yield put({type: 'FETCH_MOVIES'});
+    } catch (error) {
+        console.log('Error saving movie');
+    }
+}
+
+function* resetOMB() {
+    try {
+        yield put({type: 'RESET_OMB_STORE'});
+    }
+    catch (error) {
+        console.log('Error in Reset OMB store');
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -131,10 +153,13 @@ const omdb = (state = [], action) => {
     switch (action.type) {
         case 'SET_OMDB_SEARCH':
             return action.payload;
+        case 'RESET_OMB_STORE':
+            return [];
         default:
             return state;
     }
 }
+
 
 // Create one store that all components can use
 const storeInstance = createStore(
