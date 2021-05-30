@@ -18,12 +18,10 @@ router.get('/', (req, res) => {
 
 router.get('/detail/:id', (req, res) => {
   movie = req.params;
-  console.log('detail for movie', movie);
+  // console.log('detail for movie', movie);
   const query = `
-  SELECT "movies"."id" AS "movieId", "movies"."title", "genres"."id" AS "genreId", "genres"."name", "movies"."poster", "movies"."description"
+  SELECT "movies"."id" AS "movieId", "movies"."title", "movies"."poster", "movies"."description"
   FROM "movies"
-  JOIN "movies_genres" ON ("movies"."id" = "movies_genres"."movie_id")
-  JOIN "genres" ON ("movies_genres"."genre_id" = "genres"."id")
   WHERE "movies"."id" = $1;`;
   pool.query(query, [movie.id])
   .then((result) => {

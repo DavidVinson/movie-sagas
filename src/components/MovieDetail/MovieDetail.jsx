@@ -1,5 +1,5 @@
-import {useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 
@@ -11,45 +11,45 @@ function MovieDetail() {
     //select info from store
     //display on page
 
-    const {movieId} = useParams(); //movieId from MovieList
-    console.log('The selected movie ID', movieId);
     const dispatch = useDispatch(); //saga will pick up
-    const movieDetail = useSelector(store => store.movie);
-    console.log(movieDetail);
+
+    const { movieId } = useParams(); //movieId from MovieList
+    console.log('The selected movie ID', movieId);
+
+    const movieDetail = useSelector(store => store.movieDetail);
+    console.log('The selcted movie detail', movieDetail);
+
+    const genreDetail = useSelector(store => store.genreDetail);
+    console.log('The selected movie genre(s)', genreDetail);
+
 
     useEffect(() => {
         dispatch({
-             type: 'FETCH_MOVIE_DETAIL',
-            payload: movieId });
+            type: 'FETCH_MOVIE_DETAIL',
+            payload: movieId
+        });
+        dispatch({
+            type: 'FETCH_GENRE_DETAIL',
+            payload: movieId
+        })
     }, []);
 
 
     return (
 
-        <div>
-            <h1>Movie Detail</h1>
-            <p>Details page for movie: {movieId}</p>
-            {/* <p>{movieDetail.poster}</p>
-            <p>{movieDetail.title}</p>
-            <p>{movieDetail.name}</p>  */}
-        </div>
-    );
-}
+        <main>
+            {movieDetail.map((movie) =>
+                <div key={movie.id}>
+                    <h1>{movie.title}</h1>
+                    <img src={movie.poster} />
+                    <div>
+                        {genreDetail.map((genre) => <p>{genre.name}</p>)}
+                    </div>
+                    <p>Description: {movie.description}</p>
+                </div>
+            )}
+        </main>
+    )
+};
 
 export default MovieDetail;
-
-/*
-        <main>
-            <h1>MovieList</h1>
-            <section className="movies">
-                {movies.map(movie => 
-                //removed return statement
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img onClick={() => history.push(`/detail/${movie.id}`)} src={movie.poster} alt={movie.title}/>
-                        </div>
-                )}
-            </section>
-        </main>
-
-*/
