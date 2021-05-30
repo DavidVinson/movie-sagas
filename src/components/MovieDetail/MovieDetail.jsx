@@ -44,9 +44,9 @@ function MovieDetail() {
                 <div key={movie.id}>
                     <h1>{movie.title}</h1>
                     <img src={movie.poster} />
-                    <div>
-                        {genreDetail.map((genre) => <p key={genre.id}>{genre.name}</p>)}
-                    </div>
+                    {/* loop the genre list */}
+                    {genreDetail.map((genre) => <p key={genre.id}>{genre.name}</p>)}
+                    
                     <p>Description: {movie.description}</p>
                     <button onClick={() => history.push('/')}>Back to Movie List</button>
                 </div>
