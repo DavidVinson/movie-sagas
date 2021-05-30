@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 function Movie() {
 
@@ -10,17 +11,27 @@ function Movie() {
     //[]`Cancel` button, which should bring the user to the Home/List Page
     //[]`Save` button, which should update the title and description in the database and bring the user to the Home/List Page (which now has the new movie)
     const dispatch = useDispatch();
-    const [search, setSearch] = useState('');
-    console.log(search);
+    const history = useHistory();
+    const [searchTitle, setSearchTitle] = useState('');
+    console.log(searchTitle);
 
-    function searchOMDB(search) {
+    const omdbMovie = useSelector(store => store.omdb);
+
+
+    function searchOMDB(searchTitle) {
         console.log('search btn fired!');
         dispatch({
             type: 'SEARCH_OMDB_TITLE',
-            payload: search
+            payload: searchTitle
         })
         //clear local state
-        setSearch('');
+        setSearchTitle('');
+    }
+
+    function saveMovie() {
+        //save movie to db
+        //navigate to home (MovieList)
+        //new movie added show show in the movielist
     }
 
     return (
@@ -28,11 +39,13 @@ function Movie() {
         <div>
             <h1>Movie Comp</h1>
             <label htmlFor="title">Title</label>
-            <input id="title" name="title" value={search} onChange={(event) => setSearch(event.target.value)}></input>
-            <button onClick={() => searchOMDB(search)}>Search</button>
+            <input id="title" name="title" value={searchTitle} onChange={(event) => setSearchTitle(event.target.value)}></input>
+            <button onClick={() => searchOMDB(searchTitle)}>Search</button>
 
-            <button>Cancel</button>
+            <button onClick={() => history.push('/')}>Cancel</button>
             <button>Save</button>
+            {/* {omdbMovie ? <img src={omdbMovie.Poster}/> : <p>Movie: {searchTitle} not found!</p>} */}
+            {omdbMovie ? <p>{JSON.stringify(omdbMovie)}</p>: <p>Movie: {searchTitle} not found!</p>}
         </div>
 
     );

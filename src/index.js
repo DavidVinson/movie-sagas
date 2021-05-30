@@ -16,7 +16,8 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_DETAIL', fetchMovieDetail);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
-    yield takeEvery('FETCH_GENRE_DETAIL', fetchGenreDetail)
+    yield takeEvery('FETCH_GENRE_DETAIL', fetchGenreDetail);
+    yield takeEvery('SEARCH_OMDB_TITLE', searchOMDB);
 }
 
 function* fetchAllMovies() {
@@ -68,6 +69,18 @@ function* fetchGenreDetail(action) {
     }
 }
 
+function* searchOMDB(action) {
+    //makes call to server api/omdb to get title search
+    try {
+        const omdbResult = yield axios.get(`/api/omdb/${action.payload}`);
+        console.log('get omdb title search: ', omdbResult.data);
+        yield put({type: 'SET_OMDB_SEARCH', payload: omdbResult.data});
+    }
+    catch {
+        console.log('get omdb search error');
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -114,13 +127,23 @@ const genres = (state = [], action) => {
     }
 }
 
+const omdb = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_OMDB_SEARCH':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
         movieDetail,
-        genreDetail
+        genreDetail,
+        omdb
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

@@ -7,8 +7,8 @@ const axios = require('axios');
 // http://www.omdbapi.com/?i=tt3896198&apikey=4a75c35
 router.get('/:search', (req, res) => {
     let searchTitle = req.params.search;
-    console.log(searchTitle);
-    console.log(process.env.OMBD_API_KEY);
+    // console.log(searchTitle);
+    // console.log(process.env.OMBD_API_KEY);
     axios.get(`http://www.omdbapi.com/?t=${searchTitle}&apikey=${process.env.OMBD_API_KEY}
     `).then((response) => {
         console.log(response.data);
