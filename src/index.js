@@ -10,6 +10,7 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -19,7 +20,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRE_DETAIL', fetchGenreDetail);
     yield takeEvery('SEARCH_OMDB_TITLE', searchOMDB);
     yield takeEvery('SAVE_MOVIE', saveMovie);
-    yield takeEvery('RESET_OMB_SEARCH', resetOMB);
+    yield takeEvery('RESET_OMDB_SEARCH', resetOMDB);
 }
 
 function* fetchAllMovies() {
@@ -94,12 +95,12 @@ function* saveMovie(action) {
     }
 }
 
-function* resetOMB() {
+function* resetOMDB() {
     try {
-        yield put({type: 'RESET_OMB_STORE'});
+        yield put({type: 'RESET_OMDB_STORE'});
     }
     catch (error) {
-        console.log('Error in Reset OMB store');
+        console.log('Error in Reset OMDB store');
     }
 }
 
@@ -153,7 +154,7 @@ const omdb = (state = [], action) => {
     switch (action.type) {
         case 'SET_OMDB_SEARCH':
             return action.payload;
-        case 'RESET_OMB_STORE':
+        case 'RESET_OMDB_STORE':
             return [];
         default:
             return state;

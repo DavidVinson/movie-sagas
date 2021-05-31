@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 
 function MovieDetail() {
@@ -44,11 +45,10 @@ function MovieDetail() {
                 <div key={movie.id}>
                     <h1>{movie.title}</h1>
                     <img src={movie.poster} />
-                    {/* loop the genre list */}
                     {genreDetail.map((genre) => <p key={genre.id}>{genre.name}</p>)}
                     
                     <p>Description: {movie.description}</p>
-                    <button onClick={() => history.push('/')}>Back to Movie List</button>
+                    <Button onClick={() => history.push('/')}>Back to Movie List</Button>
                 </div>
             )}
         </main>

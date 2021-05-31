@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Form from 'react-bootstrap/Form';
 
 function Movie() {
 
@@ -22,7 +26,7 @@ function Movie() {
 
     useEffect(() => {
         dispatch({
-            type: 'RESET_OMB_SEARCH'
+            type: 'RESET_OMDB_SEARCH'
         })
     }, [])
 
@@ -61,7 +65,23 @@ function Movie() {
         <div>
             <h1>Movie Search/Add Comp {genreOption}</h1>
 
-            <form onSubmit={(event) => saveMovie(event, omdbMovie, genreOption)}>
+            <Form inline="true" onSubmit={(event) => saveMovie(event, omdbMovie, genreOption)}>
+                <Form.Group controlId="title">
+                    <Form.Label>Search Movie Title</Form.Label>
+                    <Form.Control type="text" value={searchTitle} onChange={(event) => setSearchTitle(event.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="genre">
+                    <Form.Label>Select Genre</Form.Label>
+                    <Form.Control as="select" onChange={(event) => setGenreOption(event.target.value)}>
+                        {genres.map((genre) => <option key={genre.id} value={genre.id}>{genre.name}</option>)}
+                    </Form.Control>
+                </Form.Group>
+                <Button onClick={() => searchOMDB(searchTitle)}>Search</Button>
+                <Button variant="primary" onClick={() => history.push('/')}>Cancel</Button>
+                <Button type="submit">Save</Button>
+            </Form>
+
+            {/* <form onSubmit={(event) => saveMovie(event, omdbMovie, genreOption)}>
             <label htmlFor="title">Title</label>
             <input id="title" name="title" value={searchTitle} onChange={(event) => setSearchTitle(event.target.value)}></input>
 
@@ -69,12 +89,10 @@ function Movie() {
             <select id="genre" name="genre" onChange={(event) => setGenreOption(event.target.value)}>
                 {genres.map((genre) => <option key={genre.id} value={genre.id}>{genre.name}</option>)}
             </select>
-            <button type="submit">Save</button>
 
-            </form>
+            </form> */}
 
-            <button onClick={() => searchOMDB(searchTitle)}>Search</button>
-            <button onClick={() => history.push('/')}>Cancel</button>
+
 
             {/* {omdbMovie ? <img src={omdbMovie.Poster}/> : <p>Movie: {searchTitle} not found!</p>} */}
             {omdbMovie ? <p>{JSON.stringify(omdbMovie)}</p> : <p>Movie: {searchTitle} not found!</p>}
@@ -84,3 +102,36 @@ function Movie() {
 }
 
 export default Movie;
+
+/*
+            <DropdownButton id="genre" title="Select Genre">
+            {genres.map((genre) =>
+                <Dropdown.Item eventkey={genre.id} onSelect={() => setGenreOption(eventKey)}>
+                    {genre.name}
+                </Dropdown.Item>)}
+            </DropdownButton>
+            <Button type="submit">Save</Button>
+
+
+                        <form onSubmit={(event) => saveMovie(event, omdbMovie, genreOption)}>
+            <label htmlFor="title">Title</label>
+            <input id="title" name="title" value={searchTitle} onChange={(event) => setSearchTitle(event.target.value)}></input>
+
+            <label htmlFor="genre">Select Genre</label>
+            <select id="genre" name="genre" onChange={(event) => setGenreOption(event.target.value)}>
+                {genres.map((genre) => <option key={genre.id} value={genre.id}>{genre.name}</option>)}
+            </select>
+
+            </form>
+
+            <Button onClick={() => searchOMDB(searchTitle)}>Search</Button>
+            <Button variant="primary" onClick={() => history.push('/')}>Cancel</Button>
+
+            // {omdbMovie ? <img src={omdbMovie.Poster}/> : <p>Movie: {searchTitle} not found!</p>}
+            // {omdbMovie ? <p>{JSON.stringify(omdbMovie)}</p> : <p>Movie: {searchTitle} not found!</p>}
+        </div>
+
+    );
+
+
+*/
