@@ -37,6 +37,16 @@ function MovieDetail() {
         })
     }, []);
 
+    function deleteMovie(movieId) {
+        dispatch({
+            type: 'DELETE_MOVIE',
+            payload: movieId
+        })
+        console.log('delete this movie', movieId);
+
+        history.push('/');
+    }
+
 
     return (
 
@@ -48,6 +58,8 @@ function MovieDetail() {
                     {genreDetail.map((genre) => <p key={genre.id}>{genre.name}</p>)}
                     
                     <p>Description: {movie.description}</p>
+                    <Button>Edit</Button>
+                    <Button onClick={() => deleteMovie(movieId)}>Delete</Button>
                     <Button onClick={() => history.push('/')}>Back to Movie List</Button>
                 </div>
             )}

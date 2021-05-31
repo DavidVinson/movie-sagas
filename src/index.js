@@ -21,6 +21,7 @@ function* rootSaga() {
     yield takeEvery('SEARCH_OMDB_TITLE', searchOMDB);
     yield takeEvery('SAVE_MOVIE', saveMovie);
     yield takeEvery('RESET_OMDB_SEARCH', resetOMDB);
+    yield takeEvery('DELETE_MOVIE', deleteMovie);
 }
 
 function* fetchAllMovies() {
@@ -34,6 +35,18 @@ function* fetchAllMovies() {
         console.log('get all error');
     }
         
+}
+
+function* deleteMovie(action) {
+    //make DELETE req to db
+    try {
+        yield axios.delete(`/api/movie/delete/${action.payload}`);
+        console.log('Movie deleted: ', action.payload);
+        yield put({type: 'FETCH_MOVIES'});
+    }
+    catch {
+        console.log('delete movie error');
+    }
 }
 
 function* fetchMovieDetail(action) {
