@@ -57,7 +57,7 @@ This view is completed already! It displays all of the movies in the movie datab
 
 > [x]Base functionality does not require the movie details to load correctly after refresh of the browser.
 
-### []Add Movie Page
+### [x]Add Movie Page
 
 This should show:
 
@@ -100,11 +100,11 @@ See the file: `/database/INSTRUCTIONS.md` for what to do to practice some fancy 
 
 ## Development Stretch Goals
 
-### Refresh on Details Page
+### []Refresh on Details Page
 Allow the app to maintain on refresh our details page.
 Research [React Router URL PARAMS](https://reactrouter.com/web/example/url-params) 
 
-### Edit Page (Stretch)
+### []Edit Page (Stretch)
 Add to the detail page an edit button that brings the user to the edit page.
 
 This new page should show:

@@ -24,7 +24,7 @@ function MovieList() {
                 {movies.map(movie =>
                     //removed return statement
                     // <Image src={movie.poster} alt={movie.title} thumbnail fluid/>
-                    <Card>
+                    <Card style={{width: '14rem'}}>
                         <Card.Img variant="top" onClick={() => history.push(`/detail/${movie.id}`)} src={movie.poster} alt={movie.title}/>
                         <Card.Body>
                             <Card.Title>{movie.title}</Card.Title>
@@ -43,16 +43,3 @@ function MovieList() {
 }
 
 export default MovieList;
-
-
-/*
-                {movies.map(movie => {
-                    return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img onClick={() => history.push(`/details/:${movie.id}`)} src={movie.poster} alt={movie.title}/>
-                        </div>
-                    );
-                })}
-
-*/

@@ -7,7 +7,7 @@ import MovieDetail from '../MovieDetail/MovieDetail.jsx';
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
+      <h1>Tinseltown, La-La Land!</h1>
 
       <Router>  
         <NavLink to='/movie'>Add New Movie</NavLink>    
