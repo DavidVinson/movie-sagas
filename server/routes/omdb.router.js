@@ -4,7 +4,7 @@ const pool = require('../modules/pool')
 const axios = require('axios');
 
 // http://www.omdbapi.com/?t=jaws+2
-// http://www.omdbapi.com/?i=tt3896198&apikey=4a75c35
+// http://www.omdbapi.com/?i=tt3896198&apikey=OMDB_API_KEY
 router.get('/:search', (req, res) => {
     let searchTitle = req.params.search;
     // console.log(searchTitle);

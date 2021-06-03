@@ -63,9 +63,17 @@ function Movie() {
     return (
 
         <div>
-            <h1>Movie Search/Add Comp {genreOption}</h1>
-
+            <h1>Movie Search</h1>
+            <p>The Search Movie Title is searching on the Open Movie Database.
+                    1. Search Movie Title; then select Search.
+                    If a movie title is found, the movie will be displayed. The
+                    movie is not yet in our Movie Database. 
+                    2. Select Genre Dropdown
+                    3. Select Save (will add to the database)
+                    4. Select Cancel to go back to MovieList Page
+                </p>
             <Form inline="true" onSubmit={(event) => saveMovie(event, omdbMovie, genreOption)}>
+                
                 <Form.Group controlId="title">
                     <Form.Label>Search Movie Title</Form.Label>
                     <Form.Control type="text" value={searchTitle} onChange={(event) => setSearchTitle(event.target.value)} />
@@ -94,8 +102,8 @@ function Movie() {
 
 
 
-            {/* {omdbMovie ? <img src={omdbMovie.Poster}/> : <p>Movie: {searchTitle} not found!</p>} */}
-            {omdbMovie ? <p>{JSON.stringify(omdbMovie)}</p> : <p>Movie: {searchTitle} not found!</p>}
+            {omdbMovie ? <div><img src={omdbMovie.Poster}/> <p>{omdbMovie.Genre}</p></div> : <p>Movie: {searchTitle} not found!</p>}
+            {/* {omdbMovie ? <p>{JSON.stringify(omdbMovie)}</p> : <p>Movie: {searchTitle} not found!</p>} */}
         </div>
 
     );

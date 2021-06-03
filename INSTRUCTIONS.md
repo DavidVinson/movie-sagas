@@ -100,7 +100,7 @@ See the file: `/database/INSTRUCTIONS.md` for what to do to practice some fancy 
 
 ## Development Stretch Goals
 
-### []Refresh on Details Page
+### [x]Refresh on Details Page
 Allow the app to maintain on refresh our details page.
 Research [React Router URL PARAMS](https://reactrouter.com/web/example/url-params) 
 
