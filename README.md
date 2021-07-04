@@ -6,10 +6,6 @@ _Duration: weekend project_
 
 Web app to display a listing of movies. The user will be able to search movies from the Open Movie Database (OMDB). The user will be able to add a genre to a movie. The user will be able to add a new movie to the database.
 
-This app uses an OMBD_API_KEY which will be used in the environment variables.
-
-___________from yore score readme
-
 
 ## Installation
 
@@ -25,12 +21,14 @@ The project is built on [Postgres](https://www.postgresql.org/download/), so you
 
 ## Development Setup Instructions
 
+This app uses an OMBD_API_KEY which will be used in the environment variables. The user will have to sign up to get a key from [omdb] (https://www.omdbapi.com/)
+
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
   ```
-  SERVER_SESSION_SECRET=superDuperSecret
+  OMBD_API_KEY=your key
   ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+
 - Start postgres if not running already by using `brew services start postgresql`
 - Run `npm run server`
 - Run `npm run client`
@@ -44,12 +42,6 @@ Before pushing to Heroku, run `npm run build` in terminal. This will create a bu
 - Run `npm start`
 - Navigate to `localhost:5000`
 
-## Connects database to Heroku
-```bash
-heroku pg:psql --app yore-score < database.sql
-```
-Note on how to add an 'ON DELETE' constraint 
-https://stackoverflow.com/questions/10356484/how-to-add-on-delete-cascade-constraints
 
 ## Deployment
 
@@ -58,7 +50,7 @@ https://stackoverflow.com/questions/10356484/how-to-add-on-delete-cascade-constr
 3. Create an Heroku Postgres database 
 4. Connect to the Heroku Postgres database from Postico
 5. Create the necessary tables
-6. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
+6. Add an environment variable for `OMDB_API_KEY`
 7. In the deploy section, select manual deploy
 
 ## Built With
