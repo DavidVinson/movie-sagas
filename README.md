@@ -21,7 +21,8 @@ The project is built on [Postgres](https://www.postgresql.org/download/), so you
 
 ## Development Setup Instructions
 
-This app uses an OMBD_API_KEY which will be used in the environment variables. The user will have to sign up to get a key from [omdb] (https://www.omdbapi.com/)
+This app uses an OMBD_API_KEY which will be used in the environment variables. The user will have to sign up to get a key from 
+[omdb](https://www.omdbapi.com/).
 
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
